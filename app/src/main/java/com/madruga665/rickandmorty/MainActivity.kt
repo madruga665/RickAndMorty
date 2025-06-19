@@ -26,6 +26,7 @@ import com.madruga665.rickandmorty.ui.theme.RickAndMortyTheme
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
+        val homeViewModel = HomeViewModel()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
@@ -44,18 +45,18 @@ class MainActivity : ComponentActivity() {
                 ) { innerPadding ->
                     Home(
                         modifier = Modifier.padding(innerPadding),
-                        homeViewModel = HomeViewModel()
+                        homeViewModel = homeViewModel
                     )
                 }
             }
         }
     }
 }
-
+val homeViewModel = HomeViewModel()
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     RickAndMortyTheme {
-        Home(modifier = Modifier, homeViewModel = HomeViewModel())
+        Home(modifier = Modifier, homeViewModel = homeViewModel)
     }
 }
